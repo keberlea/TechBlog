@@ -1,10 +1,33 @@
 <!-- main layout template with common html structure-->
+<!DOCTYPE html>
+<html lang="en">
 <!-- define <head> section -->
+<head>
+    <meta charset="UTF-8">
+    <title>Tech Blog</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
 <!-- display navigation menu -->
-<!-- display container for main content -->
-<!-- use {{{body}}} placeholder to render specific content for each view-->
-<!-- display footer -->
-
-
-
-
+    <header id="navheader" class="text-white">
+        <!-- add nav bar here -->
+        <section>
+            {{#if loggedIn}}
+                <a href="/">Home</a>
+                <a href="/dashboard">Dashboard</a>
+                <a href="/logout">Logout</a>
+            {{else}}
+                <a href="/">Home</a>
+                <a href="/login">Login</a>
+                <a href="/signup">Sign Up</a>
+            {{/if}}
+        </section>
+    </header>
+    <main>
+        <!-- display container for main content -->
+        <!-- use {{{body}}} placeholder to render specific content for each view-->
+        {{{body}}}
+    </main>
+</body>
+</html>
