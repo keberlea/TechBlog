@@ -2,6 +2,8 @@
 require('dotenv').config();
 //require mysql
 const mysql = require('mysql2');
+const { Sequelize } = require('sequelize');
+
 
 //connect to database
 let sequelize;

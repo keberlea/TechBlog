@@ -14,16 +14,17 @@ const models = {
 
 //create associations
 User.hasMany(Post);
-
 Post.belongsTo(User);
 
+Post.hasMany(Comment);
 Comment.belongsTo(User);
 
+User.hasMany(Comment);
 Comment.belongsTo(Post);
 
-User.hasMany(Comment);
 
-Post.hasMany(Comment);
+
+
 
 //export models
 module.exports = {
