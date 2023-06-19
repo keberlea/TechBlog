@@ -1,6 +1,36 @@
 <!-- template for user dashboard view, rendered when user is logged in and click on dashboard navigation link-->
-
+<h1>Dashboard</h1>
 <!-- display existing blog posts created by user -->
+<section id="existingposts">
+    <!-- display existing blog posts, including post-list partial -->
+    {{#each post}}
+        <section class="card">
+            <h3 class="card-title">{{title}}</h3>
+            <p>{{content}}</p>
+            <p>Author: {{{user}}}</p>
+            <p>Created: {{createdAt}}</p>
+            <p>Updated: {{updatedAt}}</p>
+            <a href="/post/{{id}}">View Post</a>
+        </section>
+    {{/each}}
+</section>
+<section id="create-new" class="card text-center">
+    <div class="card-body">
+        <h3 class="card-title">Create New Post</h3>
+        <form id="newPost">
+            <div class="card-text">
+                <label for="title">Title</label>
+                <input type="text" name="post-title" id="title" class="form-control" placeholder="Title">
+            </div>
+            <div class="card-text">
+                <label for="content">Content</label>
+                <textarea name="post-content" id="content" class="form-control" placeholder="Content"></textarea>
+            </div>
+            <button type="submit" id="create" class="btn btn-primary">Create Post</button>
+        </form>
+    </div>
+</section>
+<script src="/public/js/"></script>
 <!-- display option for new adding new blog post-->
 <!-- display option to manage existing posts like  delete post-->
 
