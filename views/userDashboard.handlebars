@@ -1,16 +1,16 @@
-<!-- template for user dashboard view, rendered when user is logged in and click on dashboard navigation link-->
+
 <h1>Dashboard</h1>
-<!-- display existing blog posts created by user -->
+
+<h2>Welcome {{user}}</h2>
+
 <section id="existingposts">
-    <!-- display existing blog posts, including post-list partial -->
-    {{#each post}}
+    
+    {{#each posts}}
         <section class="card">
-            <h3 class="card-title">{{title}}</h3>
-            <p>{{content}}</p>
-            <p>Author: {{{user}}}</p>
-            <p>Created: {{createdAt}}</p>
-            <p>Updated: {{updatedAt}}</p>
-            <a href="/post/{{id}}">View Post</a>
+            <a href="/posts/{{id}}" class="card-body">
+        <h3 class="card-title">{{title}}</h3> 
+        <h5>Posted on {{createdAt}}</h5>
+        <p class="card-text">{{content}}</p>
         </section>
     {{/each}}
 </section>
@@ -30,7 +30,4 @@
         </form>
     </div>
 </section>
-<script src="/public/js/"></script>
-<!-- display option for new adding new blog post-->
-<!-- display option to manage existing posts like  delete post-->
-
+<script src="/public/js/dashboard.js"></script>

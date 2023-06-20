@@ -1,23 +1,23 @@
 document.querySelector('#login').addEventListener('submit', event => {
     event.preventDefault();
-    const userObj ={
+    const userLogin ={
         username: document.querySelector('#loginusername').value,
         password: document.querySelector('#loginpassword').value
     }
-    console.log(userObj)
+    console.log(userLogin)
     fetch('/api/users/login', {
         method: 'POST',
-        body: JSON.stringify(userObj),
+        body: JSON.stringify(userLogin),
         headers: {
             'Content-Type': 'application/json'
         }
     })
-    .then(response => {
-        if(response.ok){
-            console.log('success');
-            document.location.replace('/');
+    .then(res=>{
+        if(res.ok){
+            console.log("user is logged in");
+            location.href = "/dashboard";
         } else {
-            alert(response.statusText);
+            alert("please try again");
         }
-    })
-})
+    });
+});

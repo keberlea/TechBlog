@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const { User, Post, Comment } = require('../../models');
-const withAuth = require('../../util/auth.js');
+const withAuth = require('../../utils/auth');
 
 //get all posts and blogs associated with users/comments
 router.get('/', (req,res) => {
