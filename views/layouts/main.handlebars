@@ -4,15 +4,17 @@
 <!-- define <head> section -->
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tech Blog</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
 <!-- display navigation menu -->
     <header id="navheader" class="text-white">
         <!-- add nav bar here -->
-        <section>
+        <section></section>
             {{#if loggedIn}}
                 <a href="/">Home</a>
                 <a href="/dashboard">Dashboard</a>
@@ -22,11 +24,8 @@
                 <a href="/login">Login</a>
                 <a href="/signup">Sign Up</a>
             {{/if}}
-        </section>
     </header>
     <main>
-        <!-- display container for main content -->
-        <!-- use {{{body}}} placeholder to render specific content for each view-->
         {{{body}}}
     </main>
 </body>

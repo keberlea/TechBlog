@@ -1,19 +1,19 @@
 //require express, router, models
-const router = require('express').Router();
 const express = require('express');
+const router = express.Router();
 const { User, Post, Comment } = require('../models');
 
 
 router.get('/', async (req, res) => {
     // retrieve all blogs with associated users
-    Blog.findAll({ include: [User]})
-        .then(blogs => {
+    Post.findAll({ include: [User]})
+        .then(posts => {
             //convert blogs to plain objects
-            const hbsBlogs = blogs.map(blog=>blog.get({plain:true}))
+            const hbsPosts = posts.map(post=>post.get({plain:true}))
             // check if user is logged in
             const loggedIn = req.session.user?true:false;
             // render homepage
-            res.render('homepage', {blogs:hbsBlogs, loggedIn, username:req.session.user?.username})
+            res.render('home', {blogs:hbsPosts, loggedIn, username:req.session.user?.username})
         })
     .catch(err => {
         console.log(err);
@@ -25,15 +25,16 @@ router.get('/', async (req, res) => {
 
 router.get('/login', (req, res) => {
     // check if user is logged in
-   if(req.session.user){
-         // redirect to homepage if user is logged in
-         res.redirect('/');
-         return;
-   }
+    const loggedIn = req.session.user ? true : false;
+  
     // render login page
-    res.render('login', {loggedIn});
-});
+    res.render('login', { loggedIn: loggedIn });
+  });
 
+  
+router.get("/signup",(req,res)=>{
+    res.render("signup")
+})
 
 router.get('/dashboard', (req,res) => {
     // check if user is logged in

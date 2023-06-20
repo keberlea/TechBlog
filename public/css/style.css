@@ -1,0 +1,72 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #853b1a;
+    text-align: center;
+    background-color: #647a69;
+}
+
+header, h1 {
+    background-color: rgb(226, 219, 210);
+    padding: 10px;
+    color: #853b1a;
+}
+
+header a {
+    margin: 10px;
+    padding: 5px;
+    color: #853b1a;
+}
+
+.card-title {
+
+}
+
+.card {
+
+}
+
+.card h5, .card p {
+    color: black;
+    font-style: normal;
+}
+
+button {
+    padding: 3px;
+    margin: 5px;
+}
+
+#newpost {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+#content, #editedContent {
+    margin-left: 10vw;
+    margin-right: 10vw;
+}
+
+#create, #update, #delete {
+    margin-left: 30vw;
+    margin-right: 30vw;
+    margin-top: 20px;
+}
+
+#comment {
+width: 80vw;
+margin-top:20px;
+}
+
+#title, #editedTitle {
+    width: 80vw;
+}
+
