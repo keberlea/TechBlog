@@ -34,29 +34,34 @@ router.get('/signup', (req, res) => {
     res.render('signup');
 });
 
-router.get('/dashboard', (req,res) => {
+router.get('/dashboard', (req, res) => {
     // check if user is logged in
-    if(!req.session.user){
-        // redirect to login page if user is not logged in
-        res.redirect('/login');
-        return;
+    if (!req.session.user) {
+      // redirect to login page if user is not logged in
+      res.redirect('/login');
+      return;
     }
     // retrieve all blogs with associated users
-    Blog.findAll(req.session.user.id, {
-         include: [Blog, Comment]
+    User.findByPk(req.session.user.id, {
+      include: [
+        {
+          model: Post,
+          include: [Comment]
+        }
+      ]
     })
-    .then(userData => {
+      .then(userData => {
         // convert data to plain objects
-        const hbsData = userData.get({plain:true})
-        hbsData.loggedIn = req.session.user?true:false;
+        const hbsData = userData.get({ plain: true });
+        hbsData.loggedIn = req.session.user ? true : false;
         // render dashboard
-        res.render('dashboard', hbsData)
-    })
-    .catch(err => {
+        res.render('dashboard', hbsData);
+      })
+      .catch(err => {
         console.log(err);
         res.status(500).json(err);
-    })
-});
+      });
+  });
 
 //single post handler
 router.get('/post/:id', (req, res) => {

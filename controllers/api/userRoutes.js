@@ -57,17 +57,22 @@ router.post('/login', (req,res) => {
             res.status(400).json({msg:'user not found'});
             return;
         }
-        //compare password
-        const isPasswordValid = bcrypt.compareSync(req.body.password, foundUser.password);
-        if(!isPasswordValid){
-            res.status(400).json({msg:'incorrect password'});
-            return;
-        }
-        req.session.user = {
-            id: foundUser.id,
-            username: foundUser.username
-        }
-        res.json({user: foundUser, msg: 'login successful'});
+        // compare password
+      const isPasswordValid = bcrypt.compareSync(req.body.password, foundUser.password);
+      if (!isPasswordValid) {
+        res.status(400).json({ msg: 'Incorrect password' });
+        return;
+      }
+      req.session.user = {
+        id: foundUser.id,
+        username: foundUser.username
+      };
+      // Redirect the user to the dashboard
+      res.redirect('/dashboard');
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json({ msg: 'An error occurred', err });
     });
 });
 
