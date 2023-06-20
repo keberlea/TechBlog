@@ -13,7 +13,7 @@ router.get('/', async (req, res) => {
             // check if user is logged in
             const loggedIn = req.session.user?true:false;
             // render homepage
-            res.render('home', {blogs:hbsPosts, loggedIn, username:req.session.user?.username})
+            res.render('home', {posts:hbsPosts, loggedIn, username:req.session.user?.username})
         })
     .catch(err => {
         console.log(err);
@@ -32,9 +32,6 @@ router.get('/login', (req, res) => {
   });
 
   
-router.get("/signup",(req,res)=>{
-    res.render("signup")
-})
 
 router.get('/dashboard', (req,res) => {
     // check if user is logged in
