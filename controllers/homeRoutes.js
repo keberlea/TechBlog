@@ -22,7 +22,6 @@ router.get('/', async (req, res) => {
     );
 });
 
-
 router.get('/login', (req, res) => {
     // check if user is logged in
     const loggedIn = req.session.user ? true : false;
@@ -31,7 +30,9 @@ router.get('/login', (req, res) => {
     res.render('login', { loggedIn: loggedIn });
   });
 
-  
+router.get('/signup', (req, res) => {
+    res.render('signup');
+});
 
 router.get('/dashboard', (req,res) => {
     // check if user is logged in

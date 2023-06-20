@@ -27,11 +27,29 @@ header a {
 }
 
 .card-title {
-
+    font-size: 1.5rem;
+    font-weight: 500;
+    line-height: 1.2;
+    color: #853b1a;
+    background-color: #91b099;
+    border-color: #853b1a;
+    border-radius: 40px;
+    width: 400px;
+    height: 35px;
 }
 
 .card {
-
+    margin: 50px;
+    padding: 20px;
+    background-color: rgb(226, 219, 210);
+    border-color: #853b1a;
+    border-radius: 40px;
+    border-style: double ;
+    border-width: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
 }
 
 .card h5, .card p {
@@ -39,9 +57,21 @@ header a {
     font-style: normal;
 }
 
-button {
+.card a {
+    color: #853b1a;
+    border: #853b1a;
+    background-color: #b3b0b0;
+    border-radius: 40px;
+    padding: 5px;
+    text-align: center;
+    width: fit-content;
+    margin: 0 auto;
+}
+
+button { 
     padding: 3px;
     margin: 5px;
+   
 }
 
 #newpost {
