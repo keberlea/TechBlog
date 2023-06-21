@@ -1,2 +1,19 @@
-<!-- template for login view rendered when user clicks on a link to log in -->
-<!-- display login form with username field, password field and submit button -->
+<section class="card text-center">
+    <div class="card-body">
+        <h3 class="card-title">Login</h3>
+        <form id="loginform">
+            <div class="card-text">
+                <label for="loginusername">Username:</label>
+                <input type="text" placeholder="username" id="loginusername">
+            </div>
+            <div class="card-text">
+                <label for="loginpassword">Password:</label>
+                <input type="password" placeholder="password" id="loginpassword">
+            </div>
+            <button id="login">Login</button>
+            <a href="/signup">Signup</a>
+        </form>
+    </div>
+</section>
+
+<script src="/js/login.js"></script>
