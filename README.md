@@ -67,9 +67,9 @@ General Technologies:
 
 
 NPM Packages
-- nodemon 
-- bcrypt
-- dotenv
+
+- ![Nodemon](https://img.shields.io/badge/NODEMON-%23323330.svg?style=for-the-badge&logo=nodemon&logoColor=%BBDEAD)
+
 - ![express](https://img.shields.io/badge/Express.js-404D59?style=for-the-badge)
 
 - ![mysql2](https://img.shields.io/badge/MySQL-00000F?style=for-the-badge&logo=mysql&logoColor=white)
@@ -79,6 +79,8 @@ NPM Packages
 - ![express.js](https://img.shields.io/badge/Express.js-404D59?style=for-the-badge)
     - express-handlebars
     - express-session
+- bcrypt
+- dotenv
 
 <br>
 
