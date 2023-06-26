@@ -1,0 +1,31 @@
+<h1>Dashboard</h1>
+<section id="currentPostUpdate">
+  <section class="card">
+      <div class="card-body">
+        <h3 class="card-title">{{hbsPost.title}}</h3> 
+        <h5>Posted on {{hbsPost.createdAt}}</h5>
+        <p class="card-text">{{hbsPost.content}}</p>
+    </div>
+  </section>
+</section>
+
+<section id="editPost" class="card text-center">
+  <div class="card-body">
+  <h3 class="card-title">Edit Post</h3>
+  <form id="editedPost">
+    <div class="card-text"></div>
+      <label for="editedTitle">Title</label><br>
+      <input type="text" id="editedTitle" placeholder="{{hbsPost.title}}" value="{{hbsPost.title}}">
+    </div>
+    <div class="card-text"></div>
+      <label for="editedContent">Content</label>
+    <textarea id="editedContent">{{hbsPost.content}}</textarea>
+    <input id="hiddenPostId" hidden="true" value="{{hbsPost.id}}"></input>
+    </div>
+    <button id="update">Update Post</button>
+    <button id="delete">Delete Post</button>
+</form>
+</div>
+</section>
+
+<script src="/js/updateDelete.js"></script>

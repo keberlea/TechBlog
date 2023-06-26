@@ -1,0 +1,38 @@
+<h1>Dashboard</h1>
+
+<h2> Welcome {{user.username}} </h2>
+
+<section id="existingposts">
+   {{#each posts}}
+        <section class="card">
+            <a href="/posts/{{id}}" class="card-body">
+                <h3 class="card-title">{{title}}</h3>
+            </a>
+                <h5>Posted on {{createdAt}}</h5>
+                <p class="card-text">{{content}}</p>
+        </section>
+    {{/each}}
+</section>
+
+<section id="createNew" class="card text-center">
+    <div class="card-body">
+        <h3 class="card-title">Create New Post</h3>
+        <form id="newPost">
+            <div class="card-text">
+                <label for="title">Title</label><br>
+                <input type="text" id="title" placeholder="Title">
+            </div>
+            <div class="card-text">
+                <label for="content">Content</label>
+                <textarea name="content" id="content" placeholder="Content"></textarea>
+            </div>
+            <button id="create" class="btn btn-primary">Create Post</button>
+        </form>
+    </div>
+</section>
+
+<form id="addNewPost">
+    <button id="addNewPost">Add New Post</button>
+</form>
+
+<script src="/js/dashboard.js"></script>

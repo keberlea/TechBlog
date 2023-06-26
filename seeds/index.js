@@ -71,17 +71,16 @@ const comments = [
 
 //create function to seed data
 const seedDatabase = async () => {
-    await sequelize.sync({ force: true });
+    await sequelize.sync({force:true});
 
-    const createdUsers = await User.bulkCreate(users, {
+    await User.bulkCreate(users, {
         individualHooks: true,
-        returning: true,
     });
 
-    const createdPosts = await Post.bulkCreate(posts);
+    await Post.bulkCreate(posts);
 
-    const createdComments = await Comment.bulkCreate(comments);
-
+    await Comment.bulkCreate(comments);
+    
     process.exit(0);
 }
 

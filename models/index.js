@@ -1,5 +1,4 @@
-//require sequilize connection
-const sequelize = require('../config/connection');
+
 //import models
 const User = require('./User');
 const Post = require('./Post');

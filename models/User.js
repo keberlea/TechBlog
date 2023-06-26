@@ -1,6 +1,6 @@
 //require sequelize, connection, and bcrypt
-const sequelize = require('../config/connection');
 const { Model, DataTypes } = require('sequelize');
+const sequelize = require('../config/connection');
 const bcrypt = require('bcrypt');
 
 //define User model
@@ -32,10 +32,9 @@ User.init({
     //hooks
     hooks: {
         //set up beforeCreate lifecycle "hook" functionality
-        async beforeCreate(newUserData) {
-            //encrypt password
-            newUserData.password = await bcrypt.hash(newUserData.password, 10);
-            return newUserData;
+       beforeCreate:async userdata=>{
+            userdata.password = await bcrypt.hash(userdata.password,5)
+            return userdata 
         }
     },
     sequelize,
