@@ -1,6 +1,5 @@
 //require express, router, models
-const express = require('express');
-const router = express.Router();
+const router = require('express').Router();
 const { User, Post, Comment } = require('../models');
 
 
@@ -25,14 +24,25 @@ router.get('/', async (req, res) => {
 router.get('/login', (req, res) => {
     // check if user is logged in
     const loggedIn = req.session.user ? true : false;
-  
     // render login page
     res.render('login', { loggedIn: loggedIn });
+  });
+
+  router.get("/logout", (req, res) => {
+    req.session.destroy(err => {
+      if (err) {
+        console.log(err);
+        return res.status(500).json({ message: "Failed to log out" });
+      }
+      res.clearCookie("session-id");
+      res.redirect("/");
+    });
   });
 
 router.get('/signup', (req, res) => {
     res.render('signup');
 });
+
 
 router.get('/dashboard', (req, res) => {
     // check if user is logged in
@@ -46,7 +56,7 @@ router.get('/dashboard', (req, res) => {
       include: [
         {
           model: Post,
-          include: [Comment]
+          include: [Comment, User]
         }
       ]
     })
@@ -64,15 +74,15 @@ router.get('/dashboard', (req, res) => {
   });
 
 //single post handler
-router.get('/post/:id', (req, res) => {
+router.get('/posts/:id', (req, res) => {
     //check to see is user is logged in
     if(!req.session.user){
         //redirect to login page if user is not logged in
-        res.redirect('/login');
-        return;
+        return res.redirect('/login');
     }
+    
     //retrieve single post with associated user and comments
-    Blog.findByPk(
+    Post.findByPk(
         req.params.id,
         {
             include: [
@@ -86,12 +96,12 @@ router.get('/post/:id', (req, res) => {
             //convert data to plain objects
             const hbsPost = dbPost.get({plain:true})
             const loggedIn = req.session.user?true:false;
-            if (dbPost.userId !=req.session.user.is){
+            if (hbsPost.userId !=req.session.user.id){
                 //if not your post -> render comment page over homepage
-                return res.render('comment',{hbsPost, loggednIn, username:req.session.user?.username});
+                return res.render('comment', {hbsPost, loggedIn, username: req.session.user?.username});
             }
             //if your post -> render update.delete page over dashboard
-            res.render('updateDelete', {hbsPost, loggedIn, username:req.session.user?.username})
+            res.render('updateDelete', {hbsPost, loggedIn, username: req.session.user?.username})
         })
         .catch(err => {
             console.log(err);

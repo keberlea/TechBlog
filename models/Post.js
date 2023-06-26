@@ -17,19 +17,20 @@ Post.init(
       allowNull: false,
     },
     content: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: false,
     },
     user_id: {
+      // foreign key to the users table
       type: DataTypes.INTEGER,
+      allowNull: false,
       references: {
         model: User,
         key: 'id',
-        onDelete: 'CASCADE',
-      },
+      }
     },
-  },
-  {
+    },
+    {
     sequelize,
     freezeTableName: true,
     underscored: true,

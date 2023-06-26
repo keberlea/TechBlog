@@ -3,9 +3,9 @@
 
 {{#each posts}}
     <section class="card">
-        <h2 class="card-title">{{title}}</h2>
-        <p id="content">{{content}}</p>
-        <p>User: {{user.username}}</p>
-        <a href="/post/{{id}}">View Post</a>
+        <a href="/posts/{{id}}" class="card-body">
+            <h3 class="card-title">{{title}}</h3></a>
+            <h5>Posted by {{user.username}} on {{createdAt}}</h5>
+            <p id="card-text">{{content}}</p>
     </section>
 {{/each}}

@@ -1,21 +1,26 @@
-document.querySelector("#newComment").addEventListener("submit",event=>{
+document.querySelector("#newComment").addEventListener("submit", event => {
     event.preventDefault();
-    const comment = {
-        body:document.querySelector("#comment").value,
-        blogId:document.querySelector("#hiddenCommentId").value,
+    const newComment = {
+        comment_text: document.querySelector("#comment").value,
+        postId: document.querySelector("#CommentId").value,
     }
+    console.log(document.querySelector("#comment").value);
+    console.log(document.querySelector("#CommentId").value);
     fetch("/api/comments",{
         method:"POST",
-        body:JSON.stringify(comment),
+        body:JSON.stringify(newComment),
         headers:{
             "Content-Type":"application/json"
         }
     }).then(res=>{
         if(res.ok){
-            console.log("comment posted")
+            console.log(newComment,"comment posted")
             location.reload()
         } else {
+            console.log(newComment)
             alert("please try again")
+           
         }
     })
+    
 })

@@ -46,6 +46,13 @@ header a {
     border-radius: 40px;
     border-style: double ;
     border-width: 10px;
+    display:inline-flex;
+    align-items: center;
+    text-align: center;
+    width: fit-content;
+}
+
+.card-body{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -57,10 +64,10 @@ header a {
     font-style: normal;
 }
 
-.card a {
+.card a{
     color: #853b1a;
     border: #853b1a;
-    background-color: #b3b0b0;
+    background-color: rgb(226, 219, 210);
     border-radius: 40px;
     padding: 5px;
     text-align: center;
@@ -74,16 +81,7 @@ button {
    
 }
 
-#newpost {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-}
 
-#content, #editedContent {
-    margin-left: 10vw;
-    margin-right: 10vw;
-}
 
 #create, #update, #delete {
     margin-left: 30vw;
@@ -97,6 +95,10 @@ margin-top:20px;
 }
 
 #title, #editedTitle {
-    width: 80vw;
+    width: 50vw;
 }
 
+#content, #editedContent {
+    width: 50vw;
+    height: 100px;
+}

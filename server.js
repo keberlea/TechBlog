@@ -1,10 +1,15 @@
 //require express, express handlebars, controllers, express-session, connection, connect session sequilize session.store and dotenv
+const path = require('path')
 const express = require('express');
+const session = require('express-session');
 const exphbs = require('express-handlebars');
+//Initializes Sequelize with session store
+const SequelizeStore = require('connect-session-sequelize')(session.Store);
+
 const routes = require('./controllers');
 const sequelize = require('./config/connection');
-const session = require('express-session');
-const SequelizeStore = require('connect-session-sequelize')(session.Store);
+const helper = require('./utils/helper');
+
 require('dotenv').config();
 
 
@@ -17,8 +22,9 @@ const { User, Post, Comment } = require('./models');
 
 
 //utilize app
-app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname,'public')));
 //set up session
 const sess = {
     secret: process.env.SECRET,
@@ -32,21 +38,25 @@ const sess = {
         db: sequelize
     })
 };
+
 //initialize the sessions middleware for use with Express
 app.use(session(sess));
-app.use(express.static('./public'));
+
 
 //set up handlebars
-const hbs = exphbs.create({});
+const hbs = exphbs.create({helper});
+
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
 
 //routes to be used by server
-app.use("/", routes);
+app.use(routes);
 
 //sync sequelize models to the database, then turn on the server
-sequelize.sync({ force: false }).then(() => {
-    app.listen(PORT, () => console.log(`Now listening on PORT ${PORT}`));
+sequelize.sync({ force: false }).then( function() {
+    app.listen(PORT, () =>
+        console.log(`Now listening on PORT ${PORT}`)
+    );
 });
 
