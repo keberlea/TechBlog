@@ -42,12 +42,12 @@ newPost.addEventListener("submit", event => {
         .then(res => {
             
             if (res.ok) {
-                createNew.setAttribute("hidden", "false")
+                createNew.setAttribute("hidden", "true");
                 location.reload();
             } else {
                 alert("Error - please try again");
             }
         });
 });
-
+ 
 

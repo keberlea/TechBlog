@@ -4,12 +4,15 @@ const withAuth = require('../../utils/auth');
 
 
 //create new blog post
-router.post('/', withAuth, async (req,res) => {
+router.post('/', async (req,res) => {
     try{
         const newPost = await Post.create({
             title: req.body.title,
             content: req.body.content,
             user_id: req.session.user.id
+        },
+        {
+            include: [User]
         });
         res.json(newPost);
     } catch (err) {
@@ -30,6 +33,9 @@ router.put('/:id', async (req,res) => {
                 where: {
                     id: req.params.id
                 }
+            },
+            {
+                include: [User]
             }
         );
         res.json(updatedPost);
@@ -46,7 +52,11 @@ router.delete('/:id', async (req,res) => {
             where: {
                 id: req.params.id
             }
-        });
+        },
+        {
+            include: [User]
+        }
+            );
         res.json(deletedPost);
     } catch (err) {
         console.log(err);
