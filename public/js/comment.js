@@ -2,7 +2,7 @@ document.querySelector("#newComment").addEventListener("submit", event => {
     event.preventDefault();
     const newComment = {
         comment_text: document.querySelector("#comment").value,
-        postId: document.querySelector("#CommentId").value,
+        post_id: document.querySelector("#CommentId").value,
     }
     console.log(document.querySelector("#comment").value);
     console.log(document.querySelector("#CommentId").value);
