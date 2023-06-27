@@ -123,10 +123,37 @@ SECRET=''<br>
 
 ### **Screenshots**
 --- 
-Login and create a post <br>
+Home <br>
+![Home Screenshot](public/assests/homescreenshot.PNG)
+<br>
+Login <br>
+
+![Login Screenshot](public/assests/LoginScreenshot.PNG)
+<br>
+Signup <br>
+
+![SignUp Screenshot](public/assests/signupScreenshot.PNG)
+<br>
+Dashboard <br>
+
+![user dashboard](public/assests/userDashboardScreenshot.PNG)
 
 <br>
-Update/Delete your post, or comment on someone else's <br>
+Create a new post <br>
+
+![create a new post](public/assests/createPostScreenshot.PNG)
+<br>
+Update/Delete a post <br>
+
+![Update/delete post](public/assests/singlepostvandUpdateandDelete.PNG)
+
+<br>
+Comment on a post <br>
+
+![Comment on a post](public/assests/SinglepostComment.PNG)
+
+
+
 
 <br>
 
@@ -136,7 +163,6 @@ This project was completed by myself, Alicia Keberle, with the instruction of th
 
 Areas needing contribution:
 - Add a profile picture to the user dashboard
-- Correcting post route to add comment
 - Add a delete comment route
 
 <br>
