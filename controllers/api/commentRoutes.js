@@ -31,7 +31,7 @@ router.get('/:id', (req, res) => {
 });
 
 //create new post comment
-router.post('/', withAuth, (req, res) => {
+router.post('/', (req, res) => {
   if(!req.session.user){
     return res.status(401).json({msg:"Please login first!"})
 }
@@ -40,7 +40,10 @@ router.post('/', withAuth, (req, res) => {
     userId:req.session.user_id,
     postId:req.body.postId
     
-  })
+  },{
+    include:[User,Post]
+  }
+)
     .then(newComment => {
       res.json(newComment);
       console.log(newComment)

@@ -138,8 +138,6 @@ Areas needing contribution:
 - Add a profile picture to the user dashboard
 - Correcting post route to add comment
 - Add a delete comment route
-- Correcting post route to add post
-- Correcting delete route to delete post
 
 <br>
 
